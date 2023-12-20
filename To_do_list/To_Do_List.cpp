@@ -3,6 +3,9 @@
 #include<cstring>
 using namespace std;
 
+//Creating a Node by Using structure Task ehich points towards next. Overall project is based on Singly Linked List
+//You can add more details for your tasks and modify the code by adding elements like Task Description, Year goals, Status, categroy, etc.
+
 struct Task
 {
     string task;
@@ -11,6 +14,8 @@ struct Task
     int time;
     Task* next;
 };
+
+//The function given below performs the task of printing the whole linked list of Tasks input by the user using Switch case in the main program
 
 void printfullToDoList(Task* p)
 {
@@ -21,6 +26,12 @@ void printfullToDoList(Task* p)
         p = p -> next;
     }
 }
+
+/*
+The function given below performs the task of prints the linked list of Tasks of the given date input by user input by 
+providing the option of using Switch case in the main program where a user can input the date and can access the data
+of Tasks of the specific dates.
+*/
 
 void printSpecificDateToDoList(Task* p, int date_list)
 {
@@ -39,6 +50,14 @@ void printSpecificDateToDoList(Task* p, int date_list)
     }
 }
 
+
+/*
+The function given below performs the task of prints the linked list of Tasks of the given month input by user input by 
+providing the option of using Switch case in the main program where a user can input the month and can access the data
+of Tasks of the specific dates.
+*/
+
+
 void printSpecificMonthToDoList(Task* p, int month_list)
 {
     while(p != nullptr)
@@ -56,22 +75,10 @@ void printSpecificMonthToDoList(Task* p, int month_list)
     }
 }
 
-// void printDateRangeToDoList(Task* p, int start_date, int end_date)
-// {
-//     while(p != nullptr)
-//     {
-//         if(p -> date >= start_date && p -> date <= end_date)
-//         {
-//             cout << "\nDate : " << p -> date << " / " << p -> month << " / " << p -> time;
-//             cout << "\nTask : " << p -> task << endl;
-//             p = p -> next;
-//         }
-//         else
-//         {
-//             p = p -> next;
-//         }
-//     }
-// }
+/*
+The function given below performs the operation of inserting the Task details and creates a Node where
+it stores the details input by the user and inserts it in a Linked List at the beginning everytime the user calls the function.
+*/
 
 Task* insertinOrder(Task* head, string task_assigned, int date_assigned, int month_assigned, int time_assigned)
 {
@@ -84,6 +91,11 @@ Task* insertinOrder(Task* head, string task_assigned, int date_assigned, int mon
 
     return newTask;
 }
+
+/*
+The function given below performs the operation of deleting the task from the beginning by removing the first Node
+of the Linked List. Everytime the user calls the function a task is deleted from the beginning only
+*/
 
 Task* deleteFirstTask(Task* head)
 {
@@ -100,6 +112,11 @@ Task* deleteFirstTask(Task* head)
         return head;
     }
 }
+
+/*
+The function given below performs the operation of deleting the task from the end by removing the last Node
+of the Linked List. Everytime the user calls the function a task is deleted from the end only
+*/
 
 Task* deleteLastTask(Task* head)
 {
@@ -127,6 +144,12 @@ Task* deleteLastTask(Task* head)
 
     return head;
 }
+
+/*
+The function given below performs the operation of deleting the task by searching the task name and removes the Node which
+includes the following information i.e. Task Name input by the user. Everytime the user calls the function a task is deleted 
+through task name input by the user only. If the details does not match a message known as Task not found is printed.
+*/
 
 Task* deleteBySearch(Task* head, string search_task)
 {
@@ -159,6 +182,11 @@ Task* deleteBySearch(Task* head, string search_task)
     return head;
 }
 
+/*
+Here the user can manipulate the Name of the task by entering the Task name and modify it accordingly. If the input details
+does not match with the following Nodes in the given Linked List, Task not found message will be prompted.
+*/
+
 Task* updateByTaskName(Task* head, string task_name, string new_task_assigned)
 {
     Task* current = head;
@@ -175,6 +203,12 @@ Task* updateByTaskName(Task* head, string task_name, string new_task_assigned)
     cout << "Task Not found : " << task_name << endl;
     return head;
 }
+
+/*
+Here the user can modify the Date and Month of the task by entering the Task Name and modify the Node's details accordingly.
+If the input details does not match with the following Nodes in the given Linked List, Task not found message will be prompted.
+*/
+
 
 Task* updateByTaskDateandMonth(Task* head, string task_name, int new_date_assigned, int new_month_assigned)
 {
@@ -194,6 +228,11 @@ Task* updateByTaskDateandMonth(Task* head, string task_name, int new_date_assign
     return head;
 }
 
+/*
+Here the user can modify the Time of the Task by entering the Task Name and modify the Node's details accordingly.
+If the input details does not match with the following Nodes in the given Linked List, Task not found message will be prompted.
+*/
+
 Task* updateByTaskTime(Task* head, string task_name, int new_time_assigned)
 {
     Task* current = head;
@@ -210,39 +249,9 @@ Task* updateByTaskTime(Task* head, string task_name, int new_time_assigned)
     cout << "Task Not found : " << task_name << endl;
     return head;
 }
-/* 
-Task* deleteInOrder(Task* head, string search_task)
-{
-    Task* previous = nullptr;
-    Task* current = head;
 
-    while(current != nullptr && current -> task != search_task)
-    {
-        previous = current;
-        current = current -> next;
-    }
 
-    if(current == nullptr)
-    {
-        cout << "Task Not Found : " << search_task << endl;
-        return head;
-    }
-
-    if(previous == nullptr)
-    {
-        head = current -> next;
-    }
-    else
-    {
-        previous -> next = current -> next;
-    }
-
-    delete current;
-    cout << "Task deleted : " << search_task << endl;
-    
-    return head;
-}
-*/
+//Below is the menu driven program where user can perform various operations through Switch cases like Instertions, deletions, modify, print, etc.
 
 int main()
 {
